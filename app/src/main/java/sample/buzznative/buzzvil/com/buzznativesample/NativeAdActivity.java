@@ -15,11 +15,7 @@ import com.buzzvil.buzzad.nativead.AdListener;
 import com.buzzvil.buzzad.nativead.NativeAd;
 import com.buzzvil.buzzad.nativead.NativeAdView;
 
-/**
- * Created by jim on 2018. 5. 9..
- */
-
-public class NativeAdActivity extends Activity{
+public class NativeAdActivity extends Activity {
     public static final String PLACEMENT_ID = "YOUR_APP_KEY";
     public static final String TAG = "NativeAdActivity";
     public static final int FEED_STYLE = 1;
@@ -40,9 +36,9 @@ public class NativeAdActivity extends Activity{
     }
 
     void setContentView() {
-        if(getIntent().getIntExtra("type", FEED_STYLE) == FEED_STYLE){
+        if (getIntent().getIntExtra("type", FEED_STYLE) == FEED_STYLE) {
             setContentView(R.layout.activity_feed_style_native_ad);
-        } else if(getIntent().getIntExtra("type", FEED_STYLE) == BANNER_STYLE){
+        } else if (getIntent().getIntExtra("type", FEED_STYLE) == BANNER_STYLE) {
             setContentView(R.layout.activity_banner_style_native_ad);
         }
     }
@@ -76,7 +72,7 @@ public class NativeAdActivity extends Activity{
         nativeAdView.setAd(ad);
 
         if (TextUtils.isEmpty(ad.getCallToAction()) == false) {
-            ((Button)nativeAdView.findViewById(R.id.btnCTA)).setText(ad.getCallToAction());
+            ((Button) nativeAdView.findViewById(R.id.btnCTA)).setText(ad.getCallToAction());
             nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.VISIBLE);
         } else {
             nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.GONE);
@@ -104,10 +100,10 @@ public class NativeAdActivity extends Activity{
 
         @Override
         public void onAdLoaded(Ad ad) {
-            Log.e(TAG, "AdListener : onAdLoaded - " + (ad != null? "Success" : "Fail"));
-            tvAdResponse.setText("onAdLoaded - " + (ad != null? "Success" : "Fail"));
+            Log.e(TAG, "AdListener : onAdLoaded - " + (ad != null ? "Success" : "Fail"));
+            tvAdResponse.setText("onAdLoaded - " + (ad != null ? "Success" : "Fail"));
 
-            if(ad == null) {
+            if (ad == null) {
                 nativeAdView.setVisibility(View.GONE);
             } else {
                 nativeAdView.setVisibility(View.VISIBLE);

@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnFeedStyle = (Button) findViewById(R.id.btnFeedStyle);
-        btnBannerStyle = (Button) findViewById(R.id.btnBannerStyle);
+        btnFeedStyle = findViewById(R.id.btnFeedStyle);
+        btnBannerStyle = findViewById(R.id.btnBannerStyle);
 
         btnFeedStyle.setOnClickListener(btnClickListener);
         btnBannerStyle.setOnClickListener(btnClickListener);
