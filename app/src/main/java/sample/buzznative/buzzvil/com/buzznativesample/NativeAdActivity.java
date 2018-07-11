@@ -18,8 +18,13 @@ import com.buzzvil.buzzad.nativead.NativeAdView;
 public class NativeAdActivity extends Activity {
     public static final String PLACEMENT_ID = "YOUR_APP_KEY";
     public static final String TAG = "NativeAdActivity";
-    public static final int FEED_STYLE = 1;
-    public static final int BANNER_STYLE = 2;
+
+    public enum AdStyle {
+        FEED, BANNER
+    }
+
+    private AdStyle adStyle = null;
+
     private NativeAdView nativeAdView;
     private Button btnLoadAd;
     private TextView tvAdResponse;
@@ -28,25 +33,30 @@ public class NativeAdActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView();
+        adStyle = (AdStyle) getIntent().getSerializableExtra("AdStyle");
+
+        setContentView(adStyle);
 
         bindViews();
 
         setClickListener();
     }
 
-    void setContentView() {
-        if (getIntent().getIntExtra("type", FEED_STYLE) == FEED_STYLE) {
-            setContentView(R.layout.activity_feed_style_native_ad);
-        } else if (getIntent().getIntExtra("type", FEED_STYLE) == BANNER_STYLE) {
-            setContentView(R.layout.activity_banner_style_native_ad);
+    void setContentView(AdStyle adStyle) {
+        switch (adStyle) {
+            case FEED:
+                setContentView(R.layout.activity_feed_style_native_ad);
+                break;
+            case BANNER:
+                setContentView(R.layout.activity_banner_style_native_ad);
+                break;
         }
     }
 
     void bindViews() {
-        btnLoadAd = (Button) findViewById(R.id.btnLoadAd);
-        tvAdResponse = (TextView) findViewById(R.id.tvAdResponse);
-        nativeAdView = (NativeAdView) findViewById(R.id.nativeAdView);
+        btnLoadAd = findViewById(R.id.btnLoadAd);
+        tvAdResponse = findViewById(R.id.tvAdResponse);
+        nativeAdView = findViewById(R.id.nativeAdView);
     }
 
     void setClickListener() {
