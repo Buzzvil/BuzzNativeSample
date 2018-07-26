@@ -1,3 +1,9 @@
+# DEPRECATED
+
+This repository is moved to [Buzzvil/sample-buzznative-android](https://github.com/Buzzvil/sample-buzznative-android).
+
+
+
 # BuzzNativeSample
 
 Sample Application for BuzzNative
